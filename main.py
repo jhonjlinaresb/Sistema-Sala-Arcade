@@ -1,0 +1,1 @@
+print("Sistema de Gestión de una Sala Arcade")
