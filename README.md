@@ -1,4 +1,4 @@
-# Sistema-Sala-Arcade
+# Sistema de Gestión de una Sala de Juegos y Videojuegos estilo Arcade
 
 ### Objetivo:
 
@@ -17,4 +17,4 @@ Tampoco crearé una versión exacta de como realizan los procedimientos en el sa
 - *Jhon Jairo Linares B.*
 - *Ingeniería de Sistemas y Telecomunicaciones.*
 - *Universidad de Manizales.*
--**2026**
+- **2026**
