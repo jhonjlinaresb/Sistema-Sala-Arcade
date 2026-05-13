@@ -12,10 +12,9 @@ Tampoco crearé una versión exacta de como realizan los procedimientos en el sa
 - Git -> Control de versiones
 - Github -> Guardar toda la información
 
-# Autor:
+# *Autor:*
 
-Jhon Jairo Linares B.
-Ingeniería de Sistemas y Telecomunicaciones.
-Universidad de Manizales.
-
-2026
+- *Jhon Jairo Linares B.*
+- *Ingeniería de Sistemas y Telecomunicaciones.*
+- *Universidad de Manizales.*
+-**2026**
