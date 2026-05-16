@@ -15,17 +15,15 @@ class ExchangeMachine:
 
     def insert_money(self, amount: float):
         
-        # --- CASO 1: Billetes ---
         if amount in self.CASH_ALLOWED:
-            billete_entero = int(amount)
-            if self.coin_box >= billete_entero:
-                self.client_cash_box += billete_entero 
-                self.coin_box -= billete_entero
-                return f"Billete de {billete_entero}€ aceptado. Entregando {billete_entero} monedas de 1€."
+            billete = int(amount)
+            if self.coin_box >= billete:
+                self.client_cash_box += billete 
+                self.coin_box -= billete
+                return f"Billete de {billete}€ aceptado. Entregando {billete} monedas de 1€."
             else:
                 return "Sin monedas de 1€ suficientes para cambiar este billete."
 
-        # --- CASO 2: Monedas ---
         elif amount in self.COINS_ALLOWED:
             if amount == 2.0:
                 if self.coin_box >= 2:
