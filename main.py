@@ -1,5 +1,6 @@
 from src.modelos.maquinas.maquina_payaso import MaquinaPayaso
 from src.modelos.maquinas.maquina_cambio import MaquinaCambio
+from src.modelos.usuarios.ususario import UsuarioComun
 from src.excepciones.excepciones import ErrorArcade
 
 def main():
@@ -31,6 +32,26 @@ def main():
         print(cambio.ejecutar(100.0))
     except ErrorArcade as e:
         print(f"Captura de excepción: {e}")
+
+    print("=== [PRUEBA]==> INTEGRACIÓN DE USUARIOS ===")
+
+    cliente = UsuarioComun("jhon_arcade", "1234")
+    cliente.añadir_fichas(5)
+    
+    payaso = MaquinaPayaso("Payasos Locos", "Derriba payasos", True)
+    
+    print(f"\nEstado inicial de {cliente.nombre_usuario}: {cliente.tickets_acumulados} tickets.")
+    
+    if cliente.usar_ficha():
+        print("[JUEGO] Usando 1 ficha... ¡A jugar!")
+        puntos, mensaje = payaso.jugar(1, 3, 4, 2)
+        print(mensaje)
+        
+        # El usuario recibe sus tickets
+        cliente.añadir_tickets(puntos)
+        print(f"Estado final: {cliente.tickets_acumulados} tickets acumulados.")
+    else:
+        print("No tienes fichas suficientes.")
 
 if __name__ == "__main__":
     main()
