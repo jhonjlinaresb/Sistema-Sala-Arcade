@@ -9,3 +9,6 @@ class ErrorMonedaNoAceptada(ErrorMaquina):
 
 class ErrorSinCambio(ErrorMaquina):
     pass
+
+class ErrorTicketsInsuficientes(ErrorArcade):
+    pass
