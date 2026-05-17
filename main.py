@@ -1,41 +1,36 @@
-from src.models.machines.clown_machine import ClownMachine
-from src.models.machines.exchange_machine import ExchangeMachine
+from src.modelos.maquinas.maquina_payaso import MaquinaPayaso
+from src.modelos.maquinas.maquina_cambio import MaquinaCambio
+from src.excepciones.excepciones import ErrorArcade
 
-print("Sistema de Gestión de una Sala de Juegos y Videojuegos estilo Arcade\n")
+def main():
+    print("=== Sistema de Gestión de una Sala de Juegos y Videojuegos estilo Arcade ===")
+    
+    payaso = MaquinaPayaso("Payasos Locos", "Derriba payasos con pelotas", True)
+    
+    try:
+        print("\n[JUEGO] Iniciando partida...")
+        puntos, mensaje = payaso.jugar(1, golpe_arriba=2, golpe_medio=3, golpe_abajo=5)
+        print(mensaje)
+    except ErrorArcade as e:
+        print(f"Error en el juego: {e}")
 
-clown_machine = ClownMachine("Payasos Locos", "Tirar los payasos con las pelotas", True)
+    cambio = MaquinaCambio(deposito_inicial=1000, limite_maximo=2000)
+    
+    print("\n[CAMBIO] Escenario 1: Billete de 20€")
+    try:
+        print(cambio.ejecutar(20.0))
+    except ErrorArcade as e:
+        print(f"Error: {e}")
 
-print(clown_machine.play(1, 2, 3, 5))
+    print("\n[CAMBIO] Escenario 2: Acumulando céntimos")
+    print(cambio.ejecutar(0.50))
+    print(cambio.ejecutar(0.50))
 
-exchange_machine = ExchangeMachine(initial_coins_deposit=1000, maximun_coin_limit=2000)
+    print("\n[CAMBIO] Escenario 3: Error con billete no aceptado")
+    try:
+        print(cambio.ejecutar(100.0))
+    except ErrorArcade as e:
+        print(f"Captura de excepción: {e}")
 
-print("=== ESTADO INICIAL DE LA MÁQUINA ===")
-print(f"Total dinero en cajas: {exchange_machine.get_total_money_in_machine()}€")
-print(f"Monedas de 1€ disponibles: {exchange_machine.coin_box}")
-print("====================================\n")
-
-print("--- ESCENARIO 1: Introduciendo billetes ---")
-resultado = exchange_machine.insert_money(20.0)
-print(resultado)
-print(f"Total en máquina actual: {exchange_machine.get_total_money_in_machine()}€\n")
-
-print("--- ESCENARIO 2: Introduciendo céntimos (Bucle de espera) ---")
-print(exchange_machine.insert_money(0.50))
-print(exchange_machine.insert_money(0.20))
-print(f"-> Total real en máquina (Sigue igual): {exchange_machine.get_total_money_in_machine()}€\n")
-
-print("--- ESCENARIO 3: Usuario pulsa botón Retirar/Cancelar ---")
-print(exchange_machine.cancel_and_return_coins())
-print(f"Flotante actual en máquina: {exchange_machine.current_client_cents}€\n")
-
-print("--- ESCENARIO 4: Introduciendo céntimos hasta consolidar 1€ ---")
-print(exchange_machine.insert_money(0.50))  
-print(exchange_machine.insert_money(0.10)) 
-print(exchange_machine.insert_money(0.50))
-
-print(f"\n-> Total real en máquina: {exchange_machine.get_total_money_in_machine()}€")
-print(f"-> Monedas de 1€ restantes en tolva: {exchange_machine.coin_box}")
-print(f"-> Flotante sobrante en el búfer: {exchange_machine.current_client_cents}€\n")
-
-print("--- ESCENARIO 5: Validación de billetes prohibidos ---")
-print(exchange_machine.insert_money(100.0))
+if __name__ == "__main__":
+    main()
