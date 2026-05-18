@@ -41,3 +41,27 @@ Tampoco crearé una versión exacta de como realizan los procedimientos en el sa
 *   **Monedas de 1€**: En el mundo real, los usuarios insertan monedas de 1€ para jugar. En el sistema, estas monedas se representan internamente como "fichas" digitales.
 *   **Uso Digital**: Los usuarios comunes poseen un saldo de estas "fichas" digitales que pueden usar para activar las máquinas de juego.
 *   **Máquina de Cambio**: Hay una máquina virtual que simula la conversión de dinero real (monedas de 1€) en estas fichas digitales, facilitando la interacción del usuario con el sistema.
+
+## Estructura del Proyecto
+
+El proyecto sigue una estructura modular y orientada a objetos, facilitando su mantenimiento y escalabilidad:
+
+```
+Sistema-Sala-Arcade/
+├── src/
+│   ├── excepciones/         # Manejo de errores personalizados
+│   │   └── excepciones.py
+│   ├── modelos/             # Clases principales del sistema
+│   │   ├── maquinas/        # Modelos de diferentes tipos de máquinas
+│   │   │   ├── maquina.py
+│   │   │   ├── maquina_cambio.py
+│   │   │   ├── maquina_juego.py
+│   │   │   └── maquina_payaso.py
+│   │   ├── usuarios/        # Modelos de usuarios (común, operador)
+│   │   │   └── usuario.py
+│   │   ├── premio.py        # Lógica de premios y canje
+│   │   └── sistema_arcade.py # Lógica central del sistema
+│   └── main.py              # Punto de entrada de la aplicación
+├── .gitignore
+└── README.md
+```
