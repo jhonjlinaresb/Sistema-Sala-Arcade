@@ -61,7 +61,7 @@ Sistema-Sala-Arcade/
 │   │   │   └── usuario.py
 │   │   ├── premio.py        # Lógica de premios y canje
 │   │   └── sistema_arcade.py # Lógica central del sistema
-│   └── main.py              # Punto de entrada de la aplicación
+│── main.py              # Punto de entrada de la aplicación
 ├── .gitignore
 └── README.md
 ```
